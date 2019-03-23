@@ -22,21 +22,19 @@ function verify_button_next() {
 
 function next() {
   $div.empty();
-  paginate(array, init, limit);
   init += 3;
   limit += 3;
+  paginate(array, init, limit)
   show();
   verify_button_next();
 }
 function previous() {
   $div.empty();
-  paginate(array, init-3, limit-3);
   init -= 3;
   limit -= 3;
+  paginate(array, init, limit)
   show();
-
 }
-
 
 function show() {
   p_array.forEach((item, index) => {
