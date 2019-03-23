@@ -12,31 +12,36 @@ function paginate(array, init, limit) {
   p_array = array.slice(init, limit);
 }
 
-function verify_button_next() {
+function verify_button_next_previous() {
   p_array.length !== 3 ? (
     $('#next').attr('disabled', '')
   ) : (
     $('#next').removeAttr('disabled', '')  
   )
+  
+  init == 0 ? (
+    $('#previous').attr('disabled', '')
+  ) : (
+    $('#previous').removeAttr('disabled', '')  
+  )
 }
 
 function next() {
   $div.empty();
-  paginate(array, init, limit);
   init += 3;
   limit += 3;
+  paginate(array, init, limit)
   show();
-  verify_button_next();
+  verify_button_next_previous();
 }
 function previous() {
   $div.empty();
-  paginate(array, init-3, limit-3);
   init -= 3;
   limit -= 3;
+  paginate(array, init, limit)
   show();
-
+  verify_button_next_previous();
 }
-
 
 function show() {
   p_array.forEach((item, index) => {
